@@ -1,31 +1,30 @@
-@extends('user.base')
+@extends('pedido.base')
 
-@section('title', 'Lista de funcionarios')
+@section('title', 'Lista de Pedidos')
 @section('content')
     <table class='table'>
         <thead>
             <tr>
                 <th scope="col">ID</th>
-                <th scope="col">Nome</th>
-                <th scope="col">Função</th>
-                <th scope="col">Remuneração</th>
-                <th scope="col">...</th>
+                <th scope="col">Cliente</th>
+                <th scope="col">Mesa</th>
+                <th scope="col">Prato</th>
+                <th scope="col">Valor</th>
+                <th scope="col">Garçom</th>
+                <th scope="col"></th>
             </tr>
         </thead>
         <tbody>
-            @foreach ($funcionarios as $funcionario)
+            @foreach ($pedidos as $pedido)
                 <tr>
-                    <th>{{ $funcionario->id }}</th>
-                    <th>{{ $funcionario->name }}</th>
-                    <th>
-                        @if ($funcionario->funcao == "ga")
-                            Garçom
-                        @endif
-
-                        </th>
-                    <th>{{ $funcionario->salario }}</th>
-                    <th style="display:flex">
-                        <form action="{{ route('users.destroy', ['id' => $funcionario->id, 'users_id' => $funcionario->users_id ]) }}" method="post">
+                    <th>{{ $pedido->id }}</th>
+                    <th>{{ $pedido->cliente }}</th>
+                    <th>{{ $pedido->mesa }}</th>
+                    <th>{{ $pedido->pratos }}</th>
+                    <th>{{ $pedido->valor }}</th>
+                    <th>{{ $pedido->funcionarios_id }}</th>
+                    {{-- <th style="display:flex">
+                        <form action="{{ route('prato.destroy', ['id' => $prato->id]) }}" method="post">
                             @csrf
                             @method('delete')
                             <button type="submit" class="btn btn-danger">
@@ -35,7 +34,7 @@
                                         d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z" />
                                 </svg>
                             </button>
-                        {{-- </form>
+                        </form>
                         <form action="{{ route('prato.edit', ['id' => $prato->id]) }}" method="get">
                             @csrf
                             <button style="margin-left: 1rem" type="submit" class="btn btn-warning"><svg
@@ -45,10 +44,10 @@
                                         d="m13.498.795.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001z" />
                                 </svg>
                             </button>
-                        </form> --}}
+                        </form>
                     </th>
 
-                </tr>
+                </tr> --}}
             @endforeach
 
         </tbody>

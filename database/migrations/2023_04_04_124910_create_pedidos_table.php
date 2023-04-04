@@ -20,9 +20,12 @@ return new class extends Migration
             $table->json('pratos');
             $table->unsignedBigInteger('status_id');
             $table->double('valor', 10,2);
+            $table->unsignedBigInteger('funcionarios_id');
             $table->timestamps();
 
-            $table->foreign('status_id')->references('id')->on('status');
+            $table->foreign('status_id')->references('id')->on('states');
+            $table->foreign('funcionarios_id')->references('id')->on('funcionarios');
+
         });
     }
 
