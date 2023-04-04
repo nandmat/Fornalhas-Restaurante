@@ -13,11 +13,16 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('funcionarios', function (Blueprint $table) {
             $table->id();
-            $table->string('cpf', 14)->unique();
+            $table->string('name');
+            $table->string('funcao', 10);
+            $table->unsignedBigInteger('users_id');
             $table->boolean('status')->default(true);
+            $table->decimal('salario')->nullable(false);
             $table->timestamps();
+
+            $table->foreign('users_id')->references('id')->on('users');
         });
     }
 
@@ -28,6 +33,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('funcionarios');
     }
 };

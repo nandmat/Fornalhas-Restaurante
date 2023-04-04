@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\FuncionariosController;
 use App\Http\Controllers\PratosController;
 use App\Http\Controllers\StatesController;
+use App\Http\Controllers\UsersController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -36,4 +38,11 @@ Route::prefix('status')->group(function(){
     Route::post('/', [StatesController::class, 'store'])->name('status.store');
     Route::put('/{id}', [StatesController::class, 'update'])->where('id', '[0-9]+')->name('status.update');
     Route::delete('/{id}', [StatesController::class, 'destroy'])->name('status.destroy');
+});
+
+Route::prefix('users')->group(function(){
+    Route::get('/create', [UsersController::class, 'create'])->name('users.create');
+    Route::get('/funcionarios/index', [FuncionariosController::class, 'index'])->name(('users.funcionarios.index'));
+    Route::post('/', [UsersController::class, 'store'])->name('users.store');
+    Route::delete('/{id}/{users_id}', [UsersController::class, 'destroy'])->name('users.destroy');
 });
